@@ -1,0 +1,6 @@
+[submodule "ral-core/lib/glfw"]
+	path = ral-core/lib/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "ral-core/lib/gl3w"]
+	path = ral-core/lib/gl3w
+	url = https://github.com/skaslev/gl3w.git

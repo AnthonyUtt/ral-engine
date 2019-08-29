@@ -11,6 +11,21 @@ set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
 file(GLOB SOURCES ${SRC_DIR}/init/*.cpp)
 
+# Setting third-party library directories
+set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib")
+set(GLFW_DIR "${LIB_DIR}/glfw")
+set(GL3W_DIR "${LIB_DIR}/gl3w")
+
+# Disabling unwanted GLFW features
+set(GLFW_BUILD_EXAMPLES OFF CACHE INTERNAL "Build the GLFW example programs")
+set(GLFW_BUILD_TESTS OFF CACHE INTERNAL "Build the GLFW test programs")
+set(GLFW_BUILD_DOCS OFF CACHE INTERNAL "Build the GLFW documentation")
+set(GLFW_INSTALL OFF CACHE INTERNAL "Generate installation target")
+
+# Adding target subdirectories
+add_subdirectory(${GLFW_DIR})
+add_subdirectory(${GL3W_DIR})
+
 # Creating library target
 add_library(${PROJECT_NAME} SHARED)
 target_sources(${PROJECT_NAME} PRIVATE ${SOURCES})
@@ -34,3 +49,12 @@ elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
     # Setting definition to export symbols
     target_compile_definitions(${PROJECT_NAME} PRIVATE WIN_EXPORT)
 endif()
+
+# GLFW
+target_link_libraries(${PROJECT_NAME} "glfw" "${GLFW_LIBRARIES}")
+target_include_directories(${PROJECT_NAME} PRIVATE "${GLFW_DIR}/include")
+target_compile_definitions(${PROJECT_NAME} PRIVATE "GLFW_INCLUDE_NONE")
+
+# gl3w
+target_link_libraries(${PROJECT_NAME} "gl3w")
+target_include_directories(${PROJECT_NAME} PRIVATE "${GL3W_DIR}/include")
