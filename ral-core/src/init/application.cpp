@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ral-log.h>
 
 #include "application.h"
 
@@ -14,6 +15,6 @@ namespace RALengine
 
     void Application::run()
     {
-        std::cout << "Welcome to RALengine!" << std::endl;
+        RALlogger::logInfo("Welcome to RALengine!", "RALengine");
     }
 }

@@ -4,3 +4,6 @@
 [submodule "ral-core/lib/gl3w"]
 	path = ral-core/lib/gl3w
 	url = https://github.com/skaslev/gl3w.git
+[submodule "ral-core/lib/ral-log"]
+	path = ral-core/lib/ral-log
+	url = https://github.com/AnthonyUtt/ral-log
