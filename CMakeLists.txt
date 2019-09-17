@@ -20,4 +20,4 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
 
 # Linking library files
 target_link_libraries(${PROJECT_NAME} "ral-core")
-target_include_directories(${PROJECT_NAME} PRIVATE ${ENGINE_LIB})
+target_include_directories(${PROJECT_NAME} PRIVATE "${ENGINE_LIB}/include")

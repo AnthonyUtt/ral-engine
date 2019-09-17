@@ -9,7 +9,7 @@ set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
 # Setting source directories
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
-file(GLOB SOURCES ${SRC_DIR}/init/*.cpp)
+file(GLOB SOURCES ${SRC_DIR}/init/*.cpp ${SRC_DIR}/sys/*.cpp)
 
 # Setting third-party library directories
 set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib")
@@ -42,7 +42,7 @@ PROPERTIES
 # Compiler-specific flags
 if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
     # g++
-    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
+    target_compile_options(${PROJECT_NAME} PRIVATE -g -Wall -Wextra)
     # Setting definition to export symbols
     target_compile_definitions(${PROJECT_NAME} PRIVATE GNU_EXPORT)
 elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")

@@ -31,3 +31,15 @@
     #define NOT_EXPORTED
   #endif
 #endif
+
+#define BIT(x) (1 << x)
+
+#ifndef ENGINE_LOGS
+  #define ENGINE_LOGS
+  #define LOG_ERROR(message) ::RALlogger::logError(message, "RALengine")
+  #define LOG_WARNING(message) ::RALlogger::logWarning(message, "RALengine")
+  #define LOG_INFO(message) ::RALlogger::logInfo(message, "RALengine")
+  #define LOG_QUIET(message) ::RALlogger::logInfo(message, "RALengine")
+  #define LOG_DEBUG(message) ::RALlogger::logDebug(message, "RALengine")
+  #define WRITE_LOG(message) ::RALlogger::writeToLog(message, "log/engine.log", "RALengine")
+#endif
