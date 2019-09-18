@@ -34,6 +34,8 @@
 
 #define BIT(x) (1 << x)
 
+#include "../../lib/ral-log/include/ral-log.h"
+
 #ifndef ENGINE_LOGS
   #define ENGINE_LOGS
   #define LOG_ERROR(message) ::RALlogger::logError(message, "RALengine")

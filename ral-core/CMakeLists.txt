@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.1)
 
 # Setting version and project name
 set(PROJECT_VERSION "0.1")
@@ -31,6 +31,11 @@ add_subdirectory(${LOG_DIR})
 # Creating library target
 add_library(${PROJECT_NAME} SHARED)
 target_sources(${PROJECT_NAME} PRIVATE ${SOURCES})
+
+# For threading support
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+target_link_libraries(${PROJECT_NAME} Threads::Threads)
 
 # Naming convention for output .so files
 set_target_properties(${PROJECT_NAME}

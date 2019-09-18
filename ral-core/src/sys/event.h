@@ -27,7 +27,7 @@ namespace RALengine
             MouseButton, MouseButtonPressed, MouseButtonReleased
         };
 
-        #define DECLARE_EVENT_TYPE(type) static EventType GetStaticType() { return EventType::##type; }\
+        #define DECLARE_EVENT_TYPE(type) static EventType GetStaticType() { return EventType::type; }\
                                         virtual EventType GetType() const override { return GetStaticType(); }\
                                         virtual const char* GetName() const override { return #type; }
         
